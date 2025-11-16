@@ -2,7 +2,6 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: Arial, sans-serif;
 }
 
 .container {
@@ -11,7 +10,8 @@
 }
 
 body{
-  background-color: #f567c9;
+  font-family: "Ruslan Display", sans-serif;
+  font-optical-sizing: auto;
 }
 
 a {
@@ -23,7 +23,7 @@ li {
   list-style: none;
 }
 
-.promo{
+.header-promo{
   max-width: 1400px;
   margin: 0 auto;
   display: flex;
@@ -36,7 +36,10 @@ li {
 }
 
 .wrapper-promo{
-  margin-top: 15px;
+  background-color: #f567c9;
+  min-height: 5vh;
+  align-content: center;
+
 }
 
 .wrapper-header{
@@ -47,7 +50,6 @@ li {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-top: 20px;
   padding: 10px 0;
 }
 
@@ -73,6 +75,7 @@ li {
 
 .logo{
   max-width: 90px;
+  border-radius: 12px;
 }
 
 .img-promo{
@@ -81,6 +84,7 @@ li {
 
 .img-auth{
   max-width: 25px;
+  cursor: pointer;
 }
 
 .arrow-down{
@@ -103,3 +107,101 @@ li {
 .nav-item-link{
   text-transform: uppercase;
 }
+
+.promo{
+  background-image: url("/background-main.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: 100%;
+  min-height: 95vh;
+  background-attachment: fixed;
+  cursor: pointer;
+}
+
+/* Mega Menu Styles */
+.mega-menu-dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 800px;
+  background: white;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  animation: fadeInDown 0.3s ease;
+}
+
+.mega-menu-content {
+  display: flex;
+  gap: 32px;
+  padding: 24px;
+}
+
+.mega-menu-column {
+  flex: 1;
+}
+
+.category-title {
+  font-weight: bold;
+  font-size: 16px;
+  color: #f567c9;
+  margin-bottom: 12px;
+  text-transform: uppercase;
+}
+
+.category-items {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.category-item {
+  padding: 6px 0;
+  color: #666;
+  text-decoration: none;
+  font-size: 14px;
+  transition: color 0.3s ease;
+  border-bottom: 1px solid transparent;
+}
+
+.category-item:hover {
+  color: #f567c9;
+  border-bottom: 1px solid #f567c9;
+}
+
+/* Анимация появления */
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Адаптивность для навигации */
+.nav-item {
+  position: relative;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.nav-list {
+  position: relative;
+}
+
+/* Обновленные стили для лучшего позиционирования */
+.navigation {
+  display: flex;
+  position: relative;
+}
+
+.wrapper-header {
+  position: relative;
+  z-index: 1000;
+}
+
