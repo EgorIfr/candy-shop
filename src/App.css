@@ -2,6 +2,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  cursor: url("/cursor-state.gif"), auto !important;
 }
 
 .container {
@@ -12,15 +13,23 @@
 body{
   font-family: "Ruslan Display", sans-serif;
   font-optical-sizing: auto;
+  cursor: url("/cursor-state.gif"), auto !important;
 }
 
 a {
   text-decoration: none;
   color: inherit;
+  cursor: url("/cursor-pointer.gif"), pointer !important;
 }
 
 li {
   list-style: none;
+}
+
+/* Явно указываем курсор для всех интерактивных элементов */
+button, input, select, textarea,
+[onclick], [role="button"], .btn {
+  cursor: url("/cursor-pointer.gif"), pointer !important;
 }
 
 .header-promo{
@@ -39,7 +48,6 @@ li {
   background-color: #f567c9;
   min-height: 5vh;
   align-content: center;
-
 }
 
 .wrapper-header{
@@ -88,7 +96,6 @@ li {
 
 .img-auth{
   max-width: 25px;
-  cursor: pointer;
   transition: transform 0.3s ease;
 }
 
@@ -102,7 +109,6 @@ li {
 .nav-item{
   display: flex;
   align-items: center;
-  cursor: pointer;
 }
 
 .nav-item:hover .arrow-down{
@@ -112,9 +118,6 @@ li {
 .nav-item-link{
   font-weight: bold;
   font-size: 14px;
-}
-
-.nav-item-link{
   text-transform: uppercase;
 }
 
@@ -124,7 +127,6 @@ li {
   background-repeat: no-repeat;
   width: 100%;
   min-height: 95vh;
-  cursor: pointer;
 }
 
 .slider-promo{
@@ -233,7 +235,6 @@ li {
   position: relative;
   display: flex;
   align-items: center;
-  cursor: pointer;
 }
 
 .nav-list {
@@ -249,4 +250,3 @@ li {
   position: relative;
   z-index: 1000;
 }
-
