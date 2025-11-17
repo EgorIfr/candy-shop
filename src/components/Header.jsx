@@ -28,14 +28,6 @@ export default function Header() {
                         { name: 'Фруктовые пастилки', link: '/fruit-pastilles' }
                     ]
                 },
-                {
-                    title: 'Специальные',
-                    items: [
-                        { name: 'Подарочные наборы', link: '/gift-sets' },
-                        { name: 'Сезонные предложения', link: '/seasonal' },
-                        { name: 'Эксклюзивные вкусы', link: '/exclusive' }
-                    ]
-                }
             ]
         },
         {
@@ -49,14 +41,6 @@ export default function Header() {
                         { name: 'Микс "Шоколадная фантазия"', link: '/chocolate-fantasy' }
                     ]
                 },
-                {
-                    title: 'Создайте свой микс',
-                    items: [
-                        { name: 'Конструктор конфет', link: '/candy-builder' },
-                        { name: 'Выбор упаковки', link: '/packaging' },
-                        { name: 'Персональная упаковка', link: '/personal-packaging' }
-                    ]
-                }
             ]
         },
         {
@@ -91,14 +75,6 @@ export default function Header() {
                         { name: 'Контакты', link: '/contacts' }
                     ]
                 },
-                {
-                    title: 'Покупателям',
-                    items: [
-                        { name: 'Доставка и оплата', link: '/delivery' },
-                        { name: 'Акции', link: '/promotions' },
-                        { name: 'Отзывы', link: '/reviews' }
-                    ]
-                }
             ]
         }
     ];
@@ -153,9 +129,9 @@ export default function Header() {
                         </nav>
 
                         <div className='block-auth'>
-                            <img src={Search} alt="Search" className='img-auth'/>
-                            <img src={Account} alt="Account" className='img-auth'/>
-                            <img src={Basket} alt="Basket" className='img-auth'/>
+                            <a href="" className="auth-link"><img src={Search} alt="Search" className='img-auth'/></a>
+                            <a href="" className="auth-link"><img src={Account} alt="Account" className='img-auth'/></a>
+                            <a href="" className="auth-link"><img src={Basket} alt="Basket" className='img-auth'/></a>
                         </div>
                     </header>
                 </div>

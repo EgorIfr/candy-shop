@@ -73,6 +73,10 @@ li {
   gap: 12px;
 }
 
+.auth-link:hover .img-auth{
+  transform: scale(1.2);
+}
+
 .logo{
   max-width: 90px;
   border-radius: 12px;
@@ -85,18 +89,24 @@ li {
 .img-auth{
   max-width: 25px;
   cursor: pointer;
+  transition: transform 0.3s ease;
 }
 
 .arrow-down{
   max-width: 25px;
   margin-bottom: 4px;
   margin-left: 4px;
+  transition: transform 0.3s ease;
 }
 
 .nav-item{
   display: flex;
   align-items: center;
   cursor: pointer;
+}
+
+.nav-item:hover .arrow-down{
+  transform: rotate(180deg);
 }
 
 .nav-item-link{
@@ -114,8 +124,44 @@ li {
   background-repeat: no-repeat;
   width: 100%;
   min-height: 95vh;
-  background-attachment: fixed;
   cursor: pointer;
+}
+
+.slider-promo{
+  height: 90px;
+  background-color: #61D0F8;
+  color: white;
+  padding: 35px 20px;
+  text-align: center;
+  overflow: hidden;
+  position: relative;
+}
+
+.carousel-track{
+  display: flex;
+  animation: carousel-scroll 20s linear infinite;
+  white-space: nowrap;
+  position: absolute;
+  left: 0;
+  align-items: center;
+}
+
+.carousel-item {
+  font-size: 24px;
+  flex-shrink: 0;
+  padding: 0 40px;
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+}
+
+@keyframes carousel-scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
 }
 
 /* Mega Menu Styles */
@@ -123,7 +169,8 @@ li {
   position: absolute;
   top: 100%;
   left: 0;
-  width: 800px;
+  width: auto;
+  min-width: 250px;
   background: white;
   border: 1px solid #e0e0e0;
   border-radius: 8px;
@@ -182,7 +229,6 @@ li {
   }
 }
 
-/* Адаптивность для навигации */
 .nav-item {
   position: relative;
   display: flex;
@@ -194,7 +240,6 @@ li {
   position: relative;
 }
 
-/* Обновленные стили для лучшего позиционирования */
 .navigation {
   display: flex;
   position: relative;
