@@ -1,0 +1,124 @@
+[
+  {
+    "title": "Наши конфеты",
+    "categories": [
+      {
+        "title": "Шоколадные",
+        "items": [
+          {
+            "name": "Шоколадные трюфели",
+            "link": "/chocolate-truffles"
+          },
+          {
+            "name": "Шоколадные батончики",
+            "link": "/chocolate-bars"
+          },
+          {
+            "name": "Шоколадные конфеты",
+            "link": "/chocolate-candies"
+          }
+        ]
+      },
+      {
+        "title": "Фруктовые",
+        "items": [
+          {
+            "name": "Фруктовые жевательные",
+            "link": "/fruit-chewy"
+          },
+          {
+            "name": "Мармелад",
+            "link": "/marmalade"
+          },
+          {
+            "name": "Фруктовые пастилки",
+            "link": "/fruit-pastilles"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "title": "Конфеты \"Микс\"",
+    "categories": [
+      {
+        "title": "Популярные миксы",
+        "items": [
+          {
+            "name": "Микс \"Сладкая радость\"",
+            "link": "/sweet-joy-mix"
+          },
+          {
+            "name": "Микс \"Фруктовый взрыв\"",
+            "link": "/fruit-explosion"
+          },
+          {
+            "name": "Микс \"Шоколадная фантазия\"",
+            "link": "/chocolate-fantasy"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "title": "Диетические",
+    "categories": [
+      {
+        "title": "Без сахара",
+        "items": [
+          {
+            "name": "На стевии",
+            "link": "/stevia"
+          },
+          {
+            "name": "На фруктозе",
+            "link": "/fructose"
+          },
+          {
+            "name": "Без сахарные шоколадные",
+            "link": "/sugar-free-chocolate"
+          }
+        ]
+      },
+      {
+        "title": "Веганские",
+        "items": [
+          {
+            "name": "Веганские шоколадные",
+            "link": "/vegan-chocolate"
+          },
+          {
+            "name": "Фруктовые веганские",
+            "link": "/vegan-fruit"
+          },
+          {
+            "name": "Ореховые веганские",
+            "link": "/vegan-nuts"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "title": "Магазин",
+    "categories": [
+      {
+        "title": "О компании",
+        "items": [
+          {
+            "name": "О нас",
+            "link": "/about"
+          },
+          {
+            "name": "Наше производство",
+            "link": "/production"
+          },
+          {
+            "name": "Контакты",
+            "link": "/contacts"
+          }
+        ]
+      }
+    ]
+  }
+]
