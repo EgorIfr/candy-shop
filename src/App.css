@@ -10,7 +10,7 @@
   margin: 0 auto;
 }
 
-body{
+body {
   font-family: "Ruslan Display", sans-serif;
   font-optical-sizing: auto;
   cursor: url("/cursor-state.gif"), auto !important;
@@ -27,34 +27,39 @@ li {
 }
 
 /* Явно указываем курсор для всех интерактивных элементов */
-button, input, select, textarea,
-[onclick], [role="button"], .btn {
+button,
+input,
+select,
+textarea,
+[onclick],
+[role="button"],
+.btn {
   cursor: url("/cursor-pointer.gif"), pointer !important;
 }
 
-.header-promo{
+.header-promo {
   max-width: 1400px;
   margin: 0 auto;
   display: flex;
   justify-content: space-between;
 }
 
-.promo-text{
+.promo-text {
   color: white;
   font-size: 14px;
 }
 
-.wrapper-promo{
+.wrapper-promo {
   background-color: #f567c9;
   min-height: 5vh;
   align-content: center;
 }
 
-.wrapper-header{
+.wrapper-header {
   background: #fbfbfb;
 }
 
-.header{
+.header {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -65,63 +70,63 @@ button, input, select, textarea,
   display: flex;
 }
 
-.nav-list{
+.nav-list {
   display: flex;
   gap: 65px;
 }
 
-.block-promo{
+.block-promo {
   display: flex;
   gap: 12px;
   align-items: center;
 }
 
-.block-auth{
+.block-auth {
   display: flex;
   gap: 12px;
 }
 
-.auth-link:hover .img-auth{
+.auth-link:hover .img-auth {
   transform: scale(1.2);
 }
 
-.logo{
+.logo {
   max-width: 90px;
   border-radius: 12px;
 }
 
-.img-promo{
+.img-promo {
   max-width: 25px;
 }
 
-.img-auth{
+.img-auth {
   max-width: 25px;
   transition: transform 0.3s ease;
 }
 
-.arrow-down{
+.arrow-down {
   max-width: 25px;
   margin-bottom: 4px;
   margin-left: 4px;
   transition: transform 0.3s ease;
 }
 
-.nav-item{
+.nav-item {
   display: flex;
   align-items: center;
 }
 
-.nav-item:hover .arrow-down{
+.nav-item:hover .arrow-down {
   transform: rotate(180deg);
 }
 
-.nav-item-link{
+.nav-item-link {
   font-weight: bold;
-  font-size: 24px;
+  font-size: 16px;
   text-transform: uppercase;
 }
 
-.promo{
+.promo {
   background-image: url("/background-main.png");
   background-size: cover;
   background-repeat: no-repeat;
@@ -129,9 +134,9 @@ button, input, select, textarea,
   min-height: 95vh;
 }
 
-.slider-promo{
+.slider-promo {
   height: 90px;
-  background-color: #61D0F8;
+  background-color: #61d0f8;
   color: white;
   padding: 35px 20px;
   text-align: center;
@@ -139,7 +144,7 @@ button, input, select, textarea,
   position: relative;
 }
 
-.carousel-track{
+.carousel-track {
   display: flex;
   animation: carousel-scroll 20s linear infinite;
   white-space: nowrap;
@@ -249,4 +254,15 @@ button, input, select, textarea,
 .wrapper-header {
   position: relative;
   z-index: 1000;
+}
+
+.featured-collection-wrapper {
+  max-width: 1300px;
+  margin: 0 auto;
+  margin-top: 30px;
+}
+
+.featured-collection-new {
+  font-size: 54px;
+  text-align: center;
 }
