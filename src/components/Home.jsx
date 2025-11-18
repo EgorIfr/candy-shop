@@ -3,7 +3,7 @@ import Header from "./Header.jsx";
 import Promo from "./Promo.jsx";
 import Featured from "./Featured.jsx";
 
-export default function Home() {
+function Home() {
   return (
     <>
       <WrapperPromo />
@@ -16,3 +16,5 @@ export default function Home() {
     </>
   );
 }
+
+export default Home;
