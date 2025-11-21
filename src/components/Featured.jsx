@@ -1,7 +1,28 @@
+import { useState } from 'react';
 import { useProducts } from '../hooks/useProducts';
 
 export default function Featured() {
   const { products, loading, error, refetch } = useProducts();
+
+  const SmoothTransformButton = ({
+    defaultText = '+',
+    hoverText = 'ДОБАВИТЬ В КОРЗИНУ',
+    onClick,
+  }) => {
+    const [isHovered, setIsHovered] = useState(false);
+
+    return (
+      <button
+        className={`smooth-transform-button ${isHovered ? 'hovered' : ''}`}
+        onClick={onClick}
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={() => setIsHovered(false)}
+      >
+        <span className="button-icon">{defaultText}</span>
+        <span className="button-text">{hoverText}</span>
+      </button>
+    );
+  };
 
   if (loading) {
     return (
@@ -68,6 +89,7 @@ export default function Featured() {
                 <div className="product-price">
                   {product.price ? `${product.price} ₽` : 'Цена не указана'}
                 </div>
+                <SmoothTransformButton />
               </div>
             </div>
           ))

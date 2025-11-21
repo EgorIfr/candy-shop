@@ -1,13 +1,10 @@
+/* === БАЗА - ЧТОБЫ ВСЁ ПРИЛИПАЛО КАК НАДО === */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  cursor: url('/cursor-state.gif'), auto !important;
-}
 
-.container {
-  max-width: 1700px;
-  margin: 0 auto;
+  cursor: url('/cursor-state.gif'), auto !important;
 }
 
 body {
@@ -26,17 +23,25 @@ li {
   list-style: none;
 }
 
-/* Явно указываем курсор для всех интерактивных элементов */
-button,
-input,
-select,
-textarea,
-[onclick],
-[role='button'],
-.btn {
-  cursor: url('/cursor-pointer.gif'), pointer !important;
+/* === ОСНОВНЫЕ КОНТЕЙНЕРЫ - ГДЕ ВСЁ ЖИВЁТ === */
+.container {
+  max-width: 1700px;
+  margin: 0 auto;
 }
 
+.wrapper-promo {
+  background-color: #f567c9;
+  min-height: 5vh;
+  align-content: center;
+}
+
+.wrapper-header {
+  background: #fbfbfb;
+  position: relative;
+  z-index: 1000;
+}
+
+/* === ВЕРХНЯЯ ШАПКА С ПРОМО - ПРИВЛЕКАЕМ ВНИМАНИЕ === */
 .header-promo {
   max-width: 1400px;
   margin: 0 auto;
@@ -49,16 +54,17 @@ textarea,
   font-size: 14px;
 }
 
-.wrapper-promo {
-  background-color: #f567c9;
-  min-height: 5vh;
-  align-content: center;
+.block-promo {
+  display: flex;
+  gap: 12px;
+  align-items: center;
 }
 
-.wrapper-header {
-  background: #fbfbfb;
+.img-promo {
+  max-width: 25px;
 }
 
+/* === ОСНОВНАЯ ШАПКА - ЛОГО, МЕНЮ, ПОИСК === */
 .header {
   display: flex;
   justify-content: space-between;
@@ -66,42 +72,33 @@ textarea,
   padding: 10px 0;
 }
 
-.navigation {
-  display: flex;
-}
-
-.nav-list {
-  display: flex;
-  gap: 65px;
-}
-
-.block-promo {
-  display: flex;
-  gap: 12px;
-  align-items: center;
-}
-
-.block-auth {
-  display: flex;
-  gap: 12px;
-}
-
-.auth-link:hover .img-auth {
-  transform: scale(1.2);
-}
-
 .logo {
   max-width: 90px;
   border-radius: 12px;
 }
 
-.img-promo {
-  max-width: 25px;
+/* === НАВИГАЦИЯ - ГЛАВНОЕ МЕНЮ === */
+.navigation {
+  display: flex;
+  position: relative;
 }
 
-.img-auth {
-  max-width: 25px;
-  transition: transform 0.3s ease;
+.nav-list {
+  display: flex;
+  gap: 65px;
+  position: relative;
+}
+
+.nav-item {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.nav-item-link {
+  font-weight: bold;
+  font-size: 16px;
+  text-transform: uppercase;
 }
 
 .arrow-down {
@@ -111,67 +108,26 @@ textarea,
   transition: transform 0.3s ease;
 }
 
-.nav-item {
-  display: flex;
-  align-items: center;
-}
-
 .nav-item:hover .arrow-down {
   transform: rotate(180deg);
 }
 
-.nav-item-link {
-  font-weight: bold;
-  font-size: 16px;
-  text-transform: uppercase;
-}
-
-.promo {
-  background-image: url('/background-main.png');
-  background-size: cover;
-  background-repeat: no-repeat;
-  width: 100%;
-  min-height: 95vh;
-}
-
-.slider-promo {
-  height: 90px;
-  background-color: #61d0f8;
-  color: white;
-  padding: 35px 20px;
-  text-align: center;
-  overflow: hidden;
-  position: relative;
-}
-
-.carousel-track {
+/* === БЛОК АВТОРИЗАЦИИ - ВОЙТИ/КОРЗИНА === */
+.block-auth {
   display: flex;
-  animation: carousel-scroll 20s linear infinite;
-  white-space: nowrap;
-  position: absolute;
-  left: 0;
-  align-items: center;
+  gap: 12px;
 }
 
-.carousel-item {
-  font-size: 24px;
-  flex-shrink: 0;
-  padding: 0 40px;
-  display: flex;
-  align-items: center;
-  white-space: nowrap;
+.img-auth {
+  max-width: 25px;
+  transition: transform 0.3s ease;
 }
 
-@keyframes carousel-scroll {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(-50%);
-  }
+.auth-link:hover .img-auth {
+  transform: scale(1.2);
 }
 
-/* Mega Menu Styles */
+/* === ВЫПАДАШКА МЕНЮ - КРУТАЯ МЕГА-ШАПКА === */
 .mega-menu-dropdown {
   position: absolute;
   top: 100%;
@@ -224,42 +180,48 @@ textarea,
   border-bottom: 1px solid #f567c9;
 }
 
-/* Анимация появления */
-@keyframes fadeInDown {
-  from {
-    opacity: 0;
-    transform: translateY(-10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+/* === ГЛАВНЫЙ БАННЕР - ТО, ЧТО ВИДЯТ ПЕРВЫМ === */
+.promo {
+  background-image: url('/background-main.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: 100%;
+  min-height: 95vh;
 }
 
-.nav-item {
+/* === БЕГУЩАЯ СТРОКА - АКЦИИ И НОВОСТИ === */
+.slider-promo {
+  height: 90px;
+  background-color: #61d0f8;
+  color: white;
+  padding: 35px 20px;
+  text-align: center;
+  overflow: hidden;
   position: relative;
+}
+
+.carousel-track {
   display: flex;
+  animation: carousel-scroll 20s linear infinite;
+  white-space: nowrap;
+  position: absolute;
+  left: 0;
   align-items: center;
 }
 
-.nav-list {
-  position: relative;
-}
-
-.navigation {
+.carousel-item {
+  font-size: 24px;
+  flex-shrink: 0;
+  padding: 0 40px;
   display: flex;
-  position: relative;
+  align-items: center;
+  white-space: nowrap;
 }
 
-.wrapper-header {
-  position: relative;
-  z-index: 1000;
-}
-
+/* === БЛОК НОВИНОК - ТОПОВЫЕ ТОВАРЫ === */
 .featured-collection-wrapper {
   max-width: 1300px;
-  margin: 0 auto;
-  margin-top: 30px;
+  margin: 30px auto 0;
   padding: 0 20px;
 }
 
@@ -302,6 +264,7 @@ textarea,
   transition: transform 0.3s ease;
 }
 
+/* === КАРТОЧКА ТОВАРА - КАК В ПРЕМИУМ МАГАЗИНЕ === */
 .product-labels {
   position: absolute;
   top: 15px;
@@ -319,10 +282,9 @@ textarea,
   font-weight: bold;
   text-transform: uppercase;
   letter-spacing: 0.5px;
-  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px, rgb(51, 51, 51) 0px 0.5px 0px 3px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.16), 0 0.5px 0 3px rgb(51, 51, 51);
 }
 
-/* Product Image */
 .product-image {
   width: 100%;
   height: 200px;
@@ -358,13 +320,15 @@ textarea,
   color: #f567c9;
 }
 
-.loading,
-.no-products,
-.error-message {
-  text-align: center;
-  font-size: 18px;
-  color: #666;
-  padding: 60px 20px;
+/* === КНОПКИ И КЛИКАБЕЛЫ - ЧТОБЫ ПАЛЬЦЫ ТЯНУЛО === */
+button,
+input,
+select,
+textarea,
+[onclick],
+[role='button'],
+.btn {
+  cursor: url('/cursor-pointer.gif'), pointer !important;
 }
 
 .retry-button {
@@ -377,12 +341,118 @@ textarea,
   font-size: 16px;
   margin-top: 15px;
   transition: background-color 0.3s ease;
+  cursor: url('/cursor-pointer.gif'), pointer !important;
 }
 
 .retry-button:hover {
   background: #e055b8;
 }
 
+/* === АНИМАЦИОННАЯ КНОПКА - ВАУ-ЭФФЕКТ ГАРАНТИРОВАН === */
+.smooth-transform-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 25px;
+  height: 25px;
+  border: none;
+  border-radius: 50%;
+  background: #61d0f8;
+  color: #333;
+  border: 1px solid black;
+  font-size: 14px;
+  font-weight: bold;
+  cursor: url('/cursor-pointer.gif'), pointer !important;
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(106, 17, 203, 0.3);
+  padding: 0;
+}
+
+.smooth-transform-button.hovered {
+  width: 180px;
+  border-radius: 30px;
+  justify-content: flex-start;
+}
+
+.button-icon {
+  transition: all 0.4s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 24px;
+}
+
+.smooth-transform-button.hovered .button-icon {
+  font-size: 20px;
+  transform: scale(0.9);
+}
+
+.button-text {
+  opacity: 0;
+  transform: translateX(-10px);
+  transition: all 0.4s ease 0.1s;
+  font-size: 12px;
+  font-weight: bold;
+  white-space: nowrap;
+  overflow: hidden;
+  font-family: 'Ruslan Display', sans-serif;
+}
+
+.smooth-transform-button.hovered .button-text {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* === СООБЩЕНИЯ - ЕСЛИ ЧТО-ТО ПОШЛО НЕ ТАК === */
+.loading,
+.no-products,
+.error-message {
+  text-align: center;
+  font-size: 18px;
+  color: #666;
+  padding: 60px 20px;
+}
+
+/* === АНИМАЦИИ - ДВИЖЕНИЕ - ЭТО ЖИЗНЬ === */
+@keyframes carousel-scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.smooth-transform-button:not(.hovered) {
+  animation: pulse 2s infinite;
+}
+
+/* === АДАПТИВ - ЧТОБЫ И НА ТЕЛЕФОНЕ БЫЛО КРУТО === */
 @media (max-width: 768px) {
   .featured-collection-wrapper {
     margin-top: 20px;
