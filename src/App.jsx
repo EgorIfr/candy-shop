@@ -1,13 +1,13 @@
-import "./App.css";
-import Home from "./components/Home.jsx";
-import {Route, Routes} from "react-router-dom";
+import './App.css';
+import { Routes, Route } from 'react-router-dom';
+import Home from './components/Home.jsx';
+import Shop from './components/Shop.jsx';
 
-function App() {
+export default function App() {
   return (
-    <>
-      <Home />
-    </>
+    <Routes>
+      <Route path="/" element={<Home />} />
+      <Route path="/shop" element={<Shop />} />
+    </Routes>
   );
 }
-
-export default App;

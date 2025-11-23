@@ -12,36 +12,30 @@ export default function Header() {
   const timeoutRef = useRef(null);
   const headerRef = useRef(null);
 
-  // Закрытие меню при клике вне области
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (headerRef.current && !headerRef.current.contains(event.target)) {
         setActiveMenu(null);
       }
     };
-
     document.addEventListener('mousedown', handleClickOutside);
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
 
   const handleMenuEnter = (index) => {
-    if (timeoutRef.current) {
-      clearTimeout(timeoutRef.current);
-    }
+    if (timeoutRef.current) clearTimeout(timeoutRef.current);
     setActiveMenu(index);
   };
 
   const handleMenuLeave = () => {
-    timeoutRef.current = setTimeout(() => {
-      setActiveMenu(null);
-    }, 150);
+    timeoutRef.current = setTimeout(() => setActiveMenu(null), 150);
   };
 
   return (
     <div className="wrapper-header" ref={headerRef}>
       <div className="container">
         <header className="header">
-          <img src={Logo} alt="Logo" className="logo" />
+          <a href="/"><img src={Logo} alt="Logo" className="logo" /></a>
 
           <nav className="navigation">
             <ul className="nav-list">
@@ -52,7 +46,7 @@ export default function Header() {
                   onMouseEnter={() => handleMenuEnter(index)}
                   onMouseLeave={handleMenuLeave}
                 >
-                  <Link to={menu.link} className="nav-item-link">
+                  <Link to={menu.link || '#'} className="nav-item-link">
                     {menu.title}
                   </Link>
                   <img src={ArrowDown} className="arrow-down" alt="" />
@@ -66,7 +60,17 @@ export default function Header() {
                       <div className="mega-menu-content">
                         {menu.categories.map((category, catIndex) => (
                           <div key={catIndex} className="mega-menu-column">
-                            <h4 className="category-title">{category.title}</h4>
+                            {category.categoryId ? (
+                              <Link
+                                to={`/shop?category=${category.categoryId}`}
+                                className="category-title-link"
+                                onClick={() => setActiveMenu(null)}
+                              >
+                                <h4 className="category-title">{category.title}</h4>
+                              </Link>
+                            ) : (
+                              <h4 className="category-title">{category.title}</h4>
+                            )}
                             <div className="category-items">
                               {category.items.map((item) => (
                                 <Link

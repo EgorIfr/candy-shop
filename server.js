@@ -86,12 +86,73 @@ app.post('/api/products', async (req, res) => {
   }
 });
 
-// Get all products
+// Get all products with optional filtering
 app.get('/api/products', async (req, res) => {
   try {
-    const [rows] = await pool.execute(
-      'SELECT * FROM products ORDER BY created_at DESC'
-    );
+    const { section, category, filter } = req.query;
+    
+    // If filter is 'new' and no other filters, use featured endpoint logic
+    if (filter === 'new' && !section && !category) {
+      const [rows] = await pool.execute(`
+        SELECT DISTINCT p.*, pl.label_text 
+        FROM products p
+        LEFT JOIN product_labels pl ON p.id = pl.product_id
+        INNER JOIN featured_collection_products fcp ON p.id = fcp.product_id
+        INNER JOIN featured_collections fc ON fcp.featured_collection_id = fc.id
+        WHERE fc.type = 'new'
+        ORDER BY (
+          SELECT display_order FROM featured_collection_products 
+          WHERE product_id = p.id
+        )
+      `);
+      return res.json(rows);
+    }
+
+    // Build query with filters
+    let query = `
+      SELECT DISTINCT p.*, pl.label_text 
+      FROM products p
+      LEFT JOIN product_labels pl ON p.id = pl.product_id
+    `;
+    const conditions = [];
+    const params = [];
+
+    // Filter by section (section_id in categories table)
+    if (section) {
+      query += ' INNER JOIN categories c_section ON p.category_id = c_section.id';
+      conditions.push('c_section.section_id = ?');
+      params.push(parseInt(section));
+    }
+
+    // Filter by category
+    if (category) {
+      conditions.push('p.category_id = ?');
+      params.push(parseInt(category));
+    }
+
+    // Filter by type (new, popular) - combined with other filters
+    if (filter === 'new') {
+      query += ` INNER JOIN featured_collection_products fcp ON p.id = fcp.product_id
+                 INNER JOIN featured_collections fc ON fcp.featured_collection_id = fc.id
+                 AND fc.type = 'new'`;
+    }
+
+    if (conditions.length > 0) {
+      query += ' WHERE ' + conditions.join(' AND ');
+    } else if (filter === 'new') {
+      query = query.replace('AND fc.type', 'WHERE fc.type');
+    }
+
+    if (filter === 'new') {
+      query += ` ORDER BY (
+        SELECT display_order FROM featured_collection_products 
+        WHERE product_id = p.id
+      )`;
+    } else {
+      query += ' ORDER BY p.display_order ASC, p.created_at DESC';
+    }
+
+    const [rows] = await pool.execute(query, params);
     res.json(rows);
   } catch (error) {
     console.error('Error fetching products:', error);

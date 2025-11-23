@@ -1,38 +1,42 @@
 [
   {
     "title": "Наши конфеты",
+    "link": "/shop?section=1",
+    "sectionId": 1,
     "categories": [
       {
         "title": "Шоколадные",
+        "categoryId": 1,
         "items": [
           {
             "name": "Шоколадные трюфели",
-            "link": "/chocolate-truffles"
+            "link": "/shop?category=1"
           },
           {
             "name": "Шоколадные батончики",
-            "link": "/chocolate-bars"
+            "link": "/shop?category=1"
           },
           {
             "name": "Шоколадные конфеты",
-            "link": "/chocolate-candies"
+            "link": "/shop?category=1"
           }
         ]
       },
       {
         "title": "Фруктовые",
+        "categoryId": 2,
         "items": [
           {
             "name": "Фруктовые жевательные",
-            "link": "/fruit-chewy"
+            "link": "/shop?category=2"
           },
           {
             "name": "Мармелад",
-            "link": "/marmalade"
+            "link": "/shop?category=2"
           },
           {
             "name": "Фруктовые пастилки",
-            "link": "/fruit-pastilles"
+            "link": "/shop?category=2"
           }
         ]
       }
@@ -40,21 +44,24 @@
   },
   {
     "title": "Конфеты \"Микс\"",
+    "link": "/shop?section=2",
+    "sectionId": 2,
     "categories": [
       {
         "title": "Популярные миксы",
+        "categoryId": 3,
         "items": [
           {
             "name": "Микс \"Сладкая радость\"",
-            "link": "/sweet-joy-mix"
+            "link": "/shop?category=3"
           },
           {
             "name": "Микс \"Фруктовый взрыв\"",
-            "link": "/fruit-explosion"
+            "link": "/shop?category=3"
           },
           {
             "name": "Микс \"Шоколадная фантазия\"",
-            "link": "/chocolate-fantasy"
+            "link": "/shop?category=3"
           }
         ]
       }
@@ -62,38 +69,42 @@
   },
   {
     "title": "Диетические",
+    "link": "/shop?section=3",
+    "sectionId": 3,
     "categories": [
       {
         "title": "Без сахара",
+        "categoryId": 4,
         "items": [
           {
             "name": "На стевии",
-            "link": "/stevia"
+            "link": "/shop?category=4"
           },
           {
             "name": "На фруктозе",
-            "link": "/fructose"
+            "link": "/shop?category=4"
           },
           {
             "name": "Без сахарные шоколадные",
-            "link": "/sugar-free-chocolate"
+            "link": "/shop?category=4"
           }
         ]
       },
       {
         "title": "Веганские",
+        "categoryId": 5,
         "items": [
           {
             "name": "Веганские шоколадные",
-            "link": "/vegan-chocolate"
+            "link": "/shop?category=5"
           },
           {
             "name": "Фруктовые веганские",
-            "link": "/vegan-fruit"
+            "link": "/shop?category=5"
           },
           {
             "name": "Ореховые веганские",
-            "link": "/vegan-nuts"
+            "link": "/shop?category=5"
           }
         ]
       }
@@ -101,7 +112,25 @@
   },
   {
     "title": "Магазин",
+    "link": "/shop",
     "categories": [
+      {
+        "title": "Каталог",
+        "items": [
+          {
+            "name": "Все товары",
+            "link": "/shop"
+          },
+          {
+            "name": "Новинки",
+            "link": "/shop?filter=new"
+          },
+          {
+            "name": "Популярные",
+            "link": "/shop?filter=popular"
+          }
+        ]
+      },
       {
         "title": "О компании",
         "items": [
