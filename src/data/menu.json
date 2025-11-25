@@ -130,23 +130,6 @@
             "link": "/shop?filter=popular"
           }
         ]
-      },
-      {
-        "title": "О компании",
-        "items": [
-          {
-            "name": "О нас",
-            "link": "/about"
-          },
-          {
-            "name": "Наше производство",
-            "link": "/production"
-          },
-          {
-            "name": "Контакты",
-            "link": "/contacts"
-          }
-        ]
       }
     ]
   }

@@ -1,6 +1,7 @@
 import { useState, useRef, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useCart } from '../hooks/useCart.js';
+import { useAuth } from '../contexts/AuthContext.jsx';
 import menuData from '../data/menu.json';
 import Logo from '/logo.jpg';
 import Basket from '/basket.svg';
@@ -13,6 +14,7 @@ export default function Header() {
   const timeoutRef = useRef(null);
   const headerRef = useRef(null);
   const { getTotalItems, openCart } = useCart();
+  const { user, isAdmin, logout } = useAuth();
 
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -102,12 +104,34 @@ export default function Header() {
           </nav>
 
           <div className="block-auth">
-            <Link to="/search" className="auth-link">
+            <Link to="/shop" className="auth-link">
               <img src={Search} alt="Search" className="img-auth" />
             </Link>
-            <Link to="/account" className="auth-link">
-              <img src={Account} alt="Account" className="img-auth" />
-            </Link>
+            {user ? (
+              <>
+                {isAdmin() && (
+                  <Link to="/admin" className="auth-link" title="Админ-панель">
+                    Админ
+                  </Link>
+                )}
+                <button
+                  onClick={logout}
+                  className="auth-link"
+                  title="Выйти"
+                  style={{ background: 'none', border: 'none', cursor: 'pointer', color: 'inherit' }}
+                >
+                </button>
+              </>
+            ) : (
+              <>
+                <Link to="/login" className="auth-link">
+                  Вход
+                </Link>
+                <Link to="/register" className="auth-link">
+                  Регистрация
+                </Link>
+              </>
+            )}
             <button
               onClick={openCart}
               className="auth-link cart-link cart-button"

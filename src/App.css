@@ -3,6 +3,7 @@
   padding: 0;
   box-sizing: border-box;
   cursor: url('/cursor-state.gif'), auto !important;
+  
 }
 
 body {
@@ -107,6 +108,7 @@ li {
 }
 
 .block-auth {
+  align-items: center;
   display: flex;
   gap: 12px;
 }
@@ -891,6 +893,7 @@ li {
 }
 
 .clear-filters-button {
+  font-family: 'Ruslan Display', sans-serif;
   padding: 10px 20px;
   border: 2px solid #ccc;
   background: white;
@@ -919,6 +922,7 @@ li {
 }
 
 .filter-button {
+  font-family: 'Ruslan Display', sans-serif;
   padding: 12px 24px;
   border: 2px solid #f567c9;
   background: white;
@@ -1736,6 +1740,7 @@ li {
 }
 
 .cart-drawer-clear-button {
+  font-family: 'Ruslan Display', sans-serif;
   background-color: #ff6b6b;
   color: white;
   border: none;
@@ -1751,6 +1756,7 @@ li {
 }
 
 .cart-drawer-checkout-button {
+  font-family: 'Ruslan Display', sans-serif;
   background-color: #f567c9;
   color: white;
   border: none;
