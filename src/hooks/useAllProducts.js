@@ -14,20 +14,17 @@ export const useAllProducts = (filter = null, section = null, category = null) =
         const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3001';
         let url = `${API_URL}/api/products`;
         
-        // Если нужен фильтр на новинки без других фильтров, используем эндпоинт featured
-        if (filter === 'new' && !section && !category) {
-          url = `${API_URL}/api/featured`;
-        } else {
-          // Строим URL с параметрами
-          const params = new URLSearchParams();
-          if (filter) params.append('filter', filter);
-          if (section) params.append('section', section);
-          if (category) params.append('category', category);
-          
-          if (params.toString()) {
-            url += '?' + params.toString();
-          }
+        // Строим URL с параметрами
+        const params = new URLSearchParams();
+        if (filter) params.append('filter', filter);
+        if (section) params.append('section', section);
+        if (category) params.append('category', category);
+        
+        if (params.toString()) {
+          url += '?' + params.toString();
         }
+        
+        console.log('Fetching products from:', url);
         
         const response = await fetch(url, {
           method: 'GET',
@@ -41,6 +38,7 @@ export const useAllProducts = (filter = null, section = null, category = null) =
         }
 
         const data = await response.json();
+        console.log('Received products:', data.length);
         setProducts(data);
       } catch (err) {
         const errorMessage = err.message || 'Не удалось подключиться к серверу. Убедитесь, что сервер запущен на порту 3001.';

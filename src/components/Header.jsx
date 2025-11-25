@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { useCart } from '../hooks/useCart.js';
 import menuData from '../data/menu.json';
 import Logo from '/logo.jpg';
 import Basket from '/basket.svg';
@@ -11,6 +12,7 @@ export default function Header() {
   const [activeMenu, setActiveMenu] = useState(null);
   const timeoutRef = useRef(null);
   const headerRef = useRef(null);
+  const { getTotalItems, openCart } = useCart();
 
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -35,7 +37,9 @@ export default function Header() {
     <div className="wrapper-header" ref={headerRef}>
       <div className="container">
         <header className="header">
-          <a href="/"><img src={Logo} alt="Logo" className="logo" /></a>
+          <a href="/">
+            <img src={Logo} alt="Logo" className="logo" />
+          </a>
 
           <nav className="navigation">
             <ul className="nav-list">
@@ -66,10 +70,14 @@ export default function Header() {
                                 className="category-title-link"
                                 onClick={() => setActiveMenu(null)}
                               >
-                                <h4 className="category-title">{category.title}</h4>
+                                <h4 className="category-title">
+                                  {category.title}
+                                </h4>
                               </Link>
                             ) : (
-                              <h4 className="category-title">{category.title}</h4>
+                              <h4 className="category-title">
+                                {category.title}
+                              </h4>
                             )}
                             <div className="category-items">
                               {category.items.map((item) => (
@@ -100,9 +108,16 @@ export default function Header() {
             <Link to="/account" className="auth-link">
               <img src={Account} alt="Account" className="img-auth" />
             </Link>
-            <Link to="/cart" className="auth-link cart-link">
+            <button
+              onClick={openCart}
+              className="auth-link cart-link cart-button"
+              aria-label="Открыть корзину"
+            >
               <img src={Basket} alt="Basket" className="img-auth" />
-            </Link>
+              {getTotalItems() > 0 && (
+                <span className="cart-badge">{getTotalItems()}</span>
+              )}
+            </button>
           </div>
         </header>
       </div>

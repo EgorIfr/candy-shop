@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useProducts } from '../hooks/useProducts';
+import { useCart } from '../hooks/useCart.js';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
@@ -29,6 +30,7 @@ const NextArrow = ({ onClick }) => (
 
 export default function Featured() {
   const { products, loading, error, refetch } = useProducts();
+  const { addToCart } = useCart();
 
   useEffect(() => {
     console.log('Products data:', products);
@@ -73,26 +75,26 @@ export default function Featured() {
     swipeToSlide: true,
     touchThreshold: 5,
     responsive: [
-      { 
-        breakpoint: 1024, 
-        settings: { 
+      {
+        breakpoint: 1024,
+        settings: {
           slidesToShow: 3,
-          speed: 500
-        } 
+          speed: 500,
+        },
       },
-      { 
-        breakpoint: 768, 
-        settings: { 
+      {
+        breakpoint: 768,
+        settings: {
           slidesToShow: 2,
-          speed: 500
-        } 
+          speed: 500,
+        },
       },
-      { 
-        breakpoint: 480, 
-        settings: { 
+      {
+        breakpoint: 480,
+        settings: {
           slidesToShow: 1,
-          speed: 400
-        } 
+          speed: 400,
+        },
       },
     ],
   };
@@ -172,7 +174,7 @@ export default function Featured() {
                   <div className="product-price">
                     {product.price ? `${product.price} ₽` : 'Цена не указана'}
                   </div>
-                  <SmoothTransformButton />
+                  <SmoothTransformButton onClick={() => addToCart(product)} />
                 </div>
               </div>
             ))}

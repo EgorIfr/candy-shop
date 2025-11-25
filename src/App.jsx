@@ -2,12 +2,16 @@ import './App.css';
 import { Routes, Route } from 'react-router-dom';
 import Home from './components/Home.jsx';
 import Shop from './components/Shop.jsx';
+import CartDrawer from './components/CartDrawer.jsx';
 
 export default function App() {
   return (
-    <Routes>
-      <Route path="/" element={<Home />} />
-      <Route path="/shop" element={<Shop />} />
-    </Routes>
+    <>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/shop" element={<Shop />} />
+      </Routes>
+      <CartDrawer />
+    </>
   );
 }

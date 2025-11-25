@@ -90,23 +90,8 @@ app.post('/api/products', async (req, res) => {
 app.get('/api/products', async (req, res) => {
   try {
     const { section, category, filter } = req.query;
-    
-    // If filter is 'new' and no other filters, use featured endpoint logic
-    if (filter === 'new' && !section && !category) {
-      const [rows] = await pool.execute(`
-        SELECT DISTINCT p.*, pl.label_text 
-        FROM products p
-        LEFT JOIN product_labels pl ON p.id = pl.product_id
-        INNER JOIN featured_collection_products fcp ON p.id = fcp.product_id
-        INNER JOIN featured_collections fc ON fcp.featured_collection_id = fc.id
-        WHERE fc.type = 'new'
-        ORDER BY (
-          SELECT display_order FROM featured_collection_products 
-          WHERE product_id = p.id
-        )
-      `);
-      return res.json(rows);
-    }
+
+    console.log('Products request:', { section, category, filter });
 
     // Build query with filters
     let query = `
@@ -116,43 +101,57 @@ app.get('/api/products', async (req, res) => {
     `;
     const conditions = [];
     const params = [];
+    let hasFeaturedJoin = false;
 
     // Filter by section (section_id in categories table)
-    if (section) {
-      query += ' INNER JOIN categories c_section ON p.category_id = c_section.id';
-      conditions.push('c_section.section_id = ?');
-      params.push(parseInt(section));
+    if (section && section !== '' && section !== 'null') {
+      const sectionId = parseInt(section);
+      if (!isNaN(sectionId)) {
+        query +=
+          ' INNER JOIN categories c_section ON p.category_id = c_section.id';
+        conditions.push('c_section.section_id = ?');
+        params.push(sectionId);
+      }
     }
 
     // Filter by category
-    if (category) {
-      conditions.push('p.category_id = ?');
-      params.push(parseInt(category));
+    if (category && category !== '' && category !== 'null') {
+      const categoryId = parseInt(category);
+      if (!isNaN(categoryId)) {
+        conditions.push('p.category_id = ?');
+        params.push(categoryId);
+      }
     }
 
     // Filter by type (new, popular) - combined with other filters
-    if (filter === 'new') {
+    if (filter === 'new' || filter === 'popular') {
       query += ` INNER JOIN featured_collection_products fcp ON p.id = fcp.product_id
-                 INNER JOIN featured_collections fc ON fcp.featured_collection_id = fc.id
-                 AND fc.type = 'new'`;
+                 INNER JOIN featured_collections fc ON fcp.featured_collection_id = fc.id`;
+      conditions.push('fc.type = ?');
+      params.push(filter);
+      hasFeaturedJoin = true;
     }
 
+    // Add WHERE clause
     if (conditions.length > 0) {
       query += ' WHERE ' + conditions.join(' AND ');
-    } else if (filter === 'new') {
-      query = query.replace('AND fc.type', 'WHERE fc.type');
     }
 
-    if (filter === 'new') {
+    // Add ORDER BY
+    if (hasFeaturedJoin) {
       query += ` ORDER BY (
         SELECT display_order FROM featured_collection_products 
-        WHERE product_id = p.id
+        WHERE product_id = p.id AND featured_collection_id = fc.id
       )`;
     } else {
       query += ' ORDER BY p.display_order ASC, p.created_at DESC';
     }
 
+    console.log('SQL Query:', query);
+    console.log('SQL Params:', params);
+
     const [rows] = await pool.execute(query, params);
+    console.log(`Found ${rows.length} products`);
     res.json(rows);
   } catch (error) {
     console.error('Error fetching products:', error);

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1
--- Время создания: Ноя 21 2025 г., 10:49
+-- Время создания: Ноя 24 2025 г., 20:49
 -- Версия сервера: 10.4.32-MariaDB
 -- Версия PHP: 8.2.12
 
@@ -67,7 +67,8 @@ CREATE TABLE `featured_collections` (
 --
 
 INSERT INTO `featured_collections` (`id`, `name`, `type`, `created_at`, `updated_at`, `is_active`) VALUES
-(9, 'Новинки', 'new', '2025-11-19 16:32:25', '2025-11-19 16:32:25', 1);
+(9, 'Новинки', 'new', '2025-11-19 16:32:25', '2025-11-19 16:32:25', 1),
+(10, 'Популярные', 'popular', '2025-11-19 16:32:25', '2025-11-19 16:32:25', 1);
 
 -- --------------------------------------------------------
 
@@ -95,7 +96,11 @@ INSERT INTO `featured_collection_products` (`id`, `featured_collection_id`, `pro
 (26, 9, 23, 5, '2025-11-19 16:32:25'),
 (27, 9, 24, 6, '2025-11-19 16:32:25'),
 (28, 9, 25, 7, '2025-11-19 16:32:25'),
-(29, 9, 26, 8, '2025-11-19 16:32:25');
+(29, 9, 26, 8, '2025-11-19 16:32:25'),
+(30, 10, 19, 1, '2025-11-19 16:32:25'),
+(31, 10, 22, 2, '2025-11-19 16:32:25'),
+(32, 10, 24, 3, '2025-11-19 16:32:25'),
+(33, 10, 26, 4, '2025-11-19 16:32:25');
 
 -- --------------------------------------------------------
 
@@ -120,14 +125,14 @@ CREATE TABLE `products` (
 --
 
 INSERT INTO `products` (`id`, `title`, `description`, `price`, `image_url`, `created_at`, `updated_at`, `category_id`, `display_order`) VALUES
-(19, 'Шоколадные конфеты \"Премиум\"', 'Набор из отборных шоколадных конфет с разными начинками', 1250.00, '/images/chocolate-premium.png', '2025-11-19 16:32:25', '2025-11-19 16:32:25', NULL, 1),
-(20, 'Мармеладные фрукты', 'Натуральный мармелад с соком настоящих фруктов', 680.00, '/images/fruit-gummies.png', '2025-11-19 16:32:25', '2025-11-19 16:32:25', NULL, 2),
-(21, 'Карамельный набор \"Радуга\"', 'Разноцветные карамельные леденцы ручной работы', 420.00, '/images/rainbow-caramel.png', '2025-11-19 16:32:25', '2025-11-19 16:32:25', NULL, 3),
-(22, 'Трюфельный шоколад', 'Изысканный шоколад с трюфельной начинкой', 890.00, '/images/truffle-chocolate.png', '2025-11-19 16:32:25', '2025-11-19 16:32:25', NULL, 4),
-(23, 'Фруктовые пастилки', 'Нежные пастилки из натурального фруктового пюре', 320.00, '/images/fruit-pastilles.png', '2025-11-19 16:32:25', '2025-11-19 16:32:25', NULL, 5),
-(24, 'Шоколадные батончики \"Энергия\"', 'Питательные батончики с орехами и сухофруктами', 550.00, '/images/energy-bars.png', '2025-11-19 16:32:25', '2025-11-19 16:32:25', NULL, 6),
-(25, 'Карамель с морской солью', 'Сливочная карамель с кристаллами морской соли', 380.00, '/images/salted-caramel.png', '2025-11-19 16:32:25', '2025-11-19 16:32:25', NULL, 7),
-(26, 'Марципановые фигурки', 'Фигурки из марципана ручной лепки', 720.00, '/images/marzipan-figures.png', '2025-11-19 16:32:25', '2025-11-19 16:32:25', NULL, 8);
+(19, 'Шоколадные конфеты \"Премиум\"', 'Набор из отборных шоколадных конфет с разными начинками', 1250.00, '/images/chocolate-premium.png', '2025-11-19 16:32:25', '2025-11-19 16:32:25', 1, 1),
+(20, 'Мармеладные фрукты', 'Натуральный мармелад с соком настоящих фруктов', 680.00, '/images/fruit-gummies.png', '2025-11-19 16:32:25', '2025-11-19 16:32:25', 2, 2),
+(21, 'Карамельный набор \"Радуга\"', 'Разноцветные карамельные леденцы ручной работы', 420.00, '/images/rainbow-caramel.png', '2025-11-19 16:32:25', '2025-11-19 16:32:25', 3, 3),
+(22, 'Трюфельный шоколад', 'Изысканный шоколад с трюфельной начинкой', 890.00, '/images/truffle-chocolate.png', '2025-11-19 16:32:25', '2025-11-19 16:32:25', 1, 4),
+(23, 'Фруктовые пастилки', 'Нежные пастилки из натурального фруктового пюре', 320.00, '/images/fruit-pastilles.png', '2025-11-19 16:32:25', '2025-11-19 16:32:25', 2, 5),
+(24, 'Шоколадные батончики \"Энергия\"', 'Питательные батончики с орехами и сухофруктами', 550.00, '/images/energy-bars.png', '2025-11-19 16:32:25', '2025-11-19 16:32:25', 1, 6),
+(25, 'Карамель с морской солью', 'Сливочная карамель с кристаллами морской соли', 380.00, '/images/salted-caramel.png', '2025-11-19 16:32:25', '2025-11-19 16:32:25', 3, 7),
+(26, 'Марципановые фигурки', 'Фигурки из марципана ручной лепки', 720.00, '/images/marzipan-figures.png', '2025-11-19 16:32:25', '2025-11-19 16:32:25', 1, 8);
 
 -- --------------------------------------------------------
 
@@ -165,7 +170,8 @@ INSERT INTO `product_labels` (`id`, `product_id`, `label_type`, `label_text`, `c
 -- Индексы таблицы `categories`
 --
 ALTER TABLE `categories`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `idx_categories_section_id` (`section_id`);
 
 --
 -- Индексы таблицы `featured_collections`
@@ -179,20 +185,26 @@ ALTER TABLE `featured_collections`
 --
 ALTER TABLE `featured_collection_products`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `idx_featured_products_order` (`display_order`);
+  ADD KEY `idx_featured_products_order` (`display_order`),
+  ADD KEY `idx_featured_products_collection_id` (`featured_collection_id`),
+  ADD KEY `idx_featured_products_product_id` (`product_id`);
 
 --
 -- Индексы таблицы `products`
 --
 ALTER TABLE `products`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `idx_products_category_id` (`category_id`),
+  ADD KEY `idx_products_display_order` (`display_order`),
+  ADD KEY `idx_products_created_at` (`created_at`);
 
 --
 -- Индексы таблицы `product_labels`
 --
 ALTER TABLE `product_labels`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `idx_product_labels_type` (`label_type`);
+  ADD KEY `idx_product_labels_type` (`label_type`),
+  ADD KEY `idx_product_labels_product_id` (`product_id`);
 
 --
 -- AUTO_INCREMENT для сохранённых таблиц
@@ -208,13 +220,13 @@ ALTER TABLE `categories`
 -- AUTO_INCREMENT для таблицы `featured_collections`
 --
 ALTER TABLE `featured_collections`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT для таблицы `featured_collection_products`
 --
 ALTER TABLE `featured_collection_products`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
 
 --
 -- AUTO_INCREMENT для таблицы `products`
@@ -226,7 +238,7 @@ ALTER TABLE `products`
 -- AUTO_INCREMENT для таблицы `product_labels`
 --
 ALTER TABLE `product_labels`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
